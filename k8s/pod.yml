@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld-pod
+  labels:
+    name: helloworld-pod
+spec:
+  containers:
+    - name:
+      image: grumpykai/nodejstest
+      ports:
+        - containerPort: 8080
