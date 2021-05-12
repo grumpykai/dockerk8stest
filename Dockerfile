@@ -2,7 +2,7 @@ FROM node
 
 WORKDIR /usr/src/app
 
-COPY . .
+RUN git clone https://github.com/grumpykai/dockerk8stest .
 
 RUN npm install
 
