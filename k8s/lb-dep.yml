@@ -14,6 +14,10 @@ spec:
     spec:
       containers:
         - name: helloworld-container
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100 Mi
           image: grumpykai/nodejstest
           env:
             - name: "PORT"
