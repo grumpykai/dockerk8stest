@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/grumpykai/dockerk8stest#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "kafka-node": "^5.0.0",
+    "kafkajs": "^1.15.0"
   }
 }
