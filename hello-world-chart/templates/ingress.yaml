@@ -1,24 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: http-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+  name: {{ template "fullname" . }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
+  ingressClassName: public
   rules:
     - http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
+          - backend:
               service:
                 name: helloworld-srv
                 port:
                   number: 8080
-          - path: /hello-world
+            path: /
             pathType: Prefix
-            backend:
-              service:
-                name: helloworld-srv
-                port:
-                  number: 8080
