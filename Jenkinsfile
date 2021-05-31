@@ -1,20 +1,16 @@
-/*pipeline {
-    agent { docker { image 'node:14-alpine' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'npm --version'
-            }
-        }
-    }
-}*/
 node {
-    checkout scm
+  
+  def dockerImage
 
-//    def customImage = docker.build("my-image:${env.BUILD_ID}")
-    def customImage = docker.build("grumpykai/nodejstest")
+  stage('Clone repository') {
+    checkout scm    
+  }  
 
-    customImage.inside {
-        sh 'cat Dockerfile'
-    }
+  stage('Build image') {   
+    dockerImage = docker.build("grumpykai/nodejstest")
+  }
+
+  stage('Push image') {
+    docker.withRegistry('https://registry.hub.docker.com', 'git') {app.push("latest")}
+  }
 }
