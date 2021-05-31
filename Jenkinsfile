@@ -12,7 +12,7 @@ node {
 
   stage('Verify') {   
     dockerImage.inside {
-      cat /usr/src/app/index.js
+      sh "cat /usr/src/app/index.js"
     }
   }
 
