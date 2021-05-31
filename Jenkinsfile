@@ -1,4 +1,4 @@
-node {
+pipeline {
   
   def dockerImage
 
@@ -18,7 +18,7 @@ node {
 
   stage('Push image') {
     docker.withRegistry("https://registry.hub.docker.com", "git") {
-      dockerImage.push("latest")
+      dockerImage.push("1.0.${env.BUILD_NUMBER}")
     }
   }
 }
