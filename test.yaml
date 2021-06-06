@@ -1,0 +1,36 @@
+id: g-1
+type: group
+operator: and
+conditions:
+  - id: p-1
+    type: group
+    operator: and
+    conditions:
+      - id: p-1-1
+        type: step
+        step: step-1
+        status: ["complete"]
+      - id: p-1-2
+        type: step
+        step: step-2
+        status: ["complete"]
+  - id: p-2
+    type: group
+    operator: or
+    conditions:
+      - id: p-2-1
+        type: step
+        step: step-3
+        status: ["complete"]
+      - id: p-2-2
+        type: group
+        operator: or
+        conditions:
+          - id: p-2-2-1
+            type: step
+            step: step-4
+            status: ["error"]
+          - id: p-2-2-2
+            type: step
+            step: step-5
+            status: ["complete"]
